@@ -59,7 +59,7 @@ function draw() {
 
   // Transitions
   if (isFading) {
-    transitionAlpha += 6; // Faster fade
+    transitionAlpha += 6; 
     if (transitionAlpha >= 255) {
       scene = nextScene;
       sceneTimer = 0;
@@ -82,16 +82,37 @@ function triggerFade(targetScene) {
   nextScene = targetScene;
 }
 
-// REDUCED TIMINGS HERE
 function getSceneDuration(s) {
-  const durations = { 
-    3: 300, // Reduced from 700 (Cricket)
-    4: 350, // Reduced from 500 (Teenage)
-    5: 400, // Reduced from 600 (Office)
-    6: 300, // Reduced from 400 (Quote)
-    7: 200  // Reduced from 300 (End)
-  };
+  const durations = { 3: 300, 4: 350, 5: 400, 6: 300, 7: 200 };
   return durations[s];
+}
+
+/* PILL-STYLE HEADING (Based on Screenshot 2026-05-13 202732.png) */
+function drawSceneHeading(title) {
+    push();
+    textSize(18);
+    let txt = title.toUpperCase();
+    let paddingH = 60;
+    let boxW = textWidth(txt) + paddingH;
+    let boxH = 40;
+    
+    // Top Center Alignment
+    let x = width / 2;
+    let y = 60;
+
+    rectMode(CENTER);
+    noStroke();
+    
+    // Dark sleek background
+    fill(15, 18, 22, 220); 
+    rect(x, y, boxW, boxH, 25); // High corner radius for pill shape
+
+    // White clean text
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textStyle(NORMAL);
+    text(txt, x, y);
+    pop();
 }
 
 /* SCENES */
@@ -155,12 +176,21 @@ function playScene3_Childhood() {
   }
 
   drawCharacter(boyX, boyY, color(20, 80, 150), color(255, 200, 150), true, 1.2, batAngle);
+  
+  // Heading as requested
+  drawSceneHeading("SUNSHINE = JOY & INNOCENCE");
 
   if (!ballActive) {
-    fill(255, 150);
+    push();
+    let pulse = map(sin(frameCount * 0.1), -1, 1, 150, 255);
     textAlign(CENTER);
-    textSize(18);
-    text("[ Press 'B' to Bowl ]", width / 2, height * 0.1);
+    textSize(32); 
+    textStyle(BOLD);
+    fill(0, pulse * 0.3);
+    text("PRESS 'B' TO BOWL", width / 2 + 2, height * 0.2 + 2);
+    fill(255, 255, 0, pulse); 
+    text("PRESS 'B' TO BOWL", width / 2, height * 0.2);
+    pop();
   }
 
   if (ballActive) {
@@ -196,6 +226,9 @@ function playScene4_Teenage() {
   drawCharacter(width * 0.65, height * 0.65, color(30, 40, 60), color(200, 150, 120), false, 1.3); 
   drawCharacter(width * 0.35, height * 0.65, color(40, 80, 120), color(255, 200, 150), false, 1.1); 
   
+  // Heading as requested
+  drawSceneHeading("STORM = REBEL, ANGER & FRUSTRATION");
+
   if (sceneTimer < 180) {
     drawDialogueBox("FATHER", "Cricket won't build your future.", 30, 170);
   } else {
@@ -235,6 +268,8 @@ function playScene5_OfficeWindow() {
   fill(45, 55, 65); rect(charX - 70, charY - 220, 140, 120, 40); 
   fill(30, 20, 15); circle(charX, charY - 260, 80);
 
+  // Heading as requested
+  drawSceneHeading("RAIN = SAD REGRETS & LONELINESS");
   drawDialogueBox("MAN", "Some dreams stay with us forever.", 40, 380);
 }
 
