@@ -94,7 +94,7 @@ function drawScene3() {
   
   drawContinuePrompt();
 }
-
+//day-2
 function drawScene4() {
   background(30, 5, 5); 
   drawRain(15); 
