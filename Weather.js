@@ -3,7 +3,7 @@ let nextScene = 1;
 let fadeAlpha = 0;
 let isFadingOut = false;
 let isFadingIn = true;
-let fadeSpeed = 5;
+// let fadeSpeed = 5;                     HACKATHON 2026
 
 let drops = [];
 let embers = [];
