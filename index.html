@@ -5,21 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather as Mood - Cinematic Short Film</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden; 
       background-color: #050505; 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    canvas {
-      display: block;
-      margin: 0 auto;
-    }
+    canvas { display: block; }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 <body>
+
+  <!-- Hidden Audio Elements -->
+  <audio id="sndBGM" src="bgm.mp3" loop></audio>
+  <audio id="sndRain" src="rain.mp3" loop></audio>
+  <audio id="sndHit" src="hit.mp3"></audio>
+
   <script src="Weather.js"></script>
 </body>
 </html>
+
