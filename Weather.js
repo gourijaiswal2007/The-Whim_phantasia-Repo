@@ -1,9 +1,13 @@
-let scene = 1; 
-// 1: Title, 2: Choice
-// BOY: 10(Sunshine), 11(Storm), 12(Rain), 13(Regret), 14(Final Quote)
-// GIRL: 20(Rain), 21(Storm), 22(Escape), 23(Success/Painting), 24(Speech)
-// ENDING: 100
+let scene = 1;
+let nextScene = 1;
+let fadeAlpha = 0;
+let isFadingOut = false;
+let isFadingIn = true;
+let fadeSpeed = 5;
 
+let drops = [];
+let embers = [];
+let snow = [];
 let sceneTimer = 0;
 let transitionAlpha = 0;
 let isFading = false;
