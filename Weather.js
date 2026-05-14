@@ -134,6 +134,12 @@ function keyPressed() {
 function mousePressed() {
   if (!isFading) {
     if (scene === 1 && btnBegin.isClicked()) {
+      // Logic for entering Full Screen on Begin
+      let fs = fullscreen();
+      if (!fs) {
+        fullscreen(true);
+      }
+      
       if (!audioStarted) { sndBGM.play(); audioStarted = true; }
       triggerFade(2);
     }
